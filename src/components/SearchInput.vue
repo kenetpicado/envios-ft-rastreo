@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center border border-gray-300 rounded-3xl text-gray-700 overflow-hidden bg-white px-2 py-1 mb-8"
+    class="flex items-center border border-gray-300 rounded-3xl text-gray-700 overflow-hidden bg-white px-1 py-1 mb-8"
   >
     <input
       type="text"
@@ -13,7 +13,7 @@
     <button
       type="submit"
       aria-label="Buscar"
-      class="flex p-2 items-center justify-center bg-amber-400 text-white h-full rounded-full transition select-none duration-300 transform active:scale-110"
+      class="flex p-2 items-center justify-center bg-[#8f00ff] text-white h-full rounded-full transition select-none duration-300 transform active:scale-110"
     >
       <SearchSvg />
     </button>

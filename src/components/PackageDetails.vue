@@ -1,25 +1,25 @@
 <template>
   <Transition>
     <div v-if="result" class="text-center max-w-xl">
-      <div class="space-y-2 mb-8">
+      <div class="mb-8">
         <h5 class="text-3xl font-bold mb-4">
           {{ result.status }}
         </h5>
-        <div v-if="result.search" class="font-bold">
+        <div v-if="result.search" class="font-bold mb-1 text-[#8f00ff]">
           {{ result.search }}
         </div>
-        <div>
-          {{ result.date }}
-        </div>
-        <div class="font-bold">
+        <div class="mb-1">
           {{ result.track }}
         </div>
-        <div>
+        <div class="text-md mb-4">
           {{ result.guide }}
         </div>
-        <div>
+        <div class="mb-4 mb-5">
           {{ result.info }}
         </div>
+        <!-- <div>
+          {{ result.date }}
+        </div> -->
       </div>
       <div v-if="result.history?.length > 0">
         <div v-for="(log, index) in result.history" class="mb-5" :key="index">
@@ -27,7 +27,7 @@
             <span
               class="font-bold flex items-center justify-center w-8 h-8 text-white rounded-full"
               :class="
-                result.history.length - 1 == index && isCompleted ? 'bg-green-500' : 'bg-amber-400 '
+                result.history.length - 1 == index && isCompleted ? 'bg-green-600' : 'bg-[#8f00ff]'
               "
             >
               <CheckSvg v-if="result.history.length - 1 == index && isCompleted" />
