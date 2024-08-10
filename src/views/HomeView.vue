@@ -6,7 +6,6 @@ import SearchInput from '@/components/SearchInput.vue'
 import useTrack from '@/composables/useTrack'
 
 const { search, result, searching, track } = useTrack()
-
 </script>
 
 <template>
@@ -22,9 +21,7 @@ const { search, result, searching, track } = useTrack()
             <img src="/logo-blanco.png" alt="" class="w-20 h-auto" />
           </a>
         </div>
-        <h5 class="text-2xl lg:text-4xl font-bold mb-8 tracking-wider">
-          ¡Rastrea tu paquete!
-        </h5>
+        <h5 class="text-2xl lg:text-4xl font-bold mb-8 tracking-wider">¡Rastrea tu paquete!</h5>
         <div class="text-base font-light mb-10 leading-relaxed tracking-wide">
           Ingresa el número de seguimiento y mantente al tanto del progreso de tu paquete en tiempo
           real ⏰

@@ -3,11 +3,15 @@ import axios from 'axios'
 import { ref } from 'vue'
 
 export function useTrack() {
-  const BASE_URL = 'https://donut.strain-team.com'
-  // const BASE_URL = 'http://127.0.0.1:8000'
+  //const BASE_URL = 'https://donut.strain-team.com'
+  const BASE_URL = 'http://localhost:3000'
   const searching = ref(false)
-  const result = ref(null)
   const track = ref('')
+
+  const result = ref({
+    details: [],
+    logs: []
+  })
 
   const search = async () => {
     if (!track.value) {
@@ -28,19 +32,20 @@ export function useTrack() {
     try {
       resetValues()
       searching.value = true
-      const { data } = await axios.post(`${BASE_URL}/api/track`, { track: track.value })
-      result.value = data
-      result.value.search = track.value
-      track.value = ''
+      const { data } = await axios.get(`${BASE_URL}/everest`, {
+        params: { track: track.value }
+      })
+      result.value.details = data.details
+      result.value.logs = data.logs
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Error al buscar el paquete')
+      toast.error(error?.message || 'Error al buscar el paquete')
     } finally {
       searching.value = false
     }
   }
 
   function resetValues() {
-    result.value = null
+    result.value = { details: [], logs: [] }
   }
 
   function clear() {
