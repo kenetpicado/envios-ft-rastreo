@@ -10,7 +10,8 @@ export function useTrack() {
 
   const result = ref({
     details: [],
-    logs: []
+    logs: [],
+    is_completed: false
   })
 
   const search = async () => {
@@ -37,6 +38,7 @@ export function useTrack() {
       })
       result.value.details = data.details
       result.value.logs = data.logs
+      result.value.is_completed = data.is_completed
     } catch (error) {
       toast.error(error?.message || 'Error al buscar el paquete')
     } finally {
@@ -45,7 +47,7 @@ export function useTrack() {
   }
 
   function resetValues() {
-    result.value = { details: [], logs: [] }
+    result.value = { details: [], logs: [], is_completed: false }
   }
 
   function clear() {

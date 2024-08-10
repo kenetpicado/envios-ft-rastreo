@@ -12,9 +12,9 @@
         <div class="flex flex-col items-center justify-center mb-2">
           <span
             class="font-bold flex items-center justify-center w-8 h-8 text-white rounded-full"
-            :class="result.logs.length - 1 == index ? 'bg-green-600' : 'bg-[#8f00ff]'"
+            :class="result.logs.length - 1 == index && result.is_completed ? 'bg-green-600' : 'bg-[#8f00ff]'"
           >
-            <CheckSvg v-if="result.logs.length - 1 == index" />
+            <CheckSvg v-if="result.logs.length - 1 == index && result.is_completed" />
             <label v-else>
               {{ index + 1 }}
             </label>
