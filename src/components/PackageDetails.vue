@@ -1,7 +1,7 @@
 <template>
   <Transition>
     <div v-if="result.details.length > 0 ?? result.logs.length > 0" class="text-center max-w-xl">
-      <div v-for="(detail, index) in result.details" :key="detail" class="mb-4">
+      <div v-for="(detail, index) in result.details" :key="detail" class="mb-4 px-2">
         <span
           :class="{ 'font-bold text-2xl': index == 0 }"
           v-html="detail"
@@ -32,9 +32,7 @@
 </template>
 
 <script setup>
-import { dictionary } from '@/utils/dictionary'
 import CheckSvg from '@/components/icons/CheckSvg.vue'
-import { computed } from 'vue'
 
 const props = defineProps({
   result: {
