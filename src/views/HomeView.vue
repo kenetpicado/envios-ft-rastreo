@@ -17,8 +17,8 @@ const { search, result, searching, track } = useTrack()
     <div class="w-full flex flex-col items-center justify-center mb-6">
       <form @submit.prevent="search" class="text-center py-6 px-4 max-w-xl mt-8">
         <div class="flex items-center justify-center mb-4">
-          <a href="">
-            <img src="/logo-blanco.png" alt="" class="w-20 h-auto" />
+          <a href="https://enviosfasttrackni.com">
+            <img src="/logo-blanco.png" alt="Logo" class="w-20 h-auto" />
           </a>
         </div>
         <h5 class="text-2xl lg:text-4xl font-bold mb-8 tracking-wider">¡Rastrea tu paquete!</h5>
