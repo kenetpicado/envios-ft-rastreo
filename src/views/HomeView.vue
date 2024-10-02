@@ -14,7 +14,7 @@ const { search, result, searching, track } = useTrack()
     style="background: linear-gradient(20deg, #1b9cfd, #004aad)"
   >
     <Loading v-model:active="searching" :is-full-page="true" />
-    <div class="w-full flex flex-col items-center justify-center mb-6">
+    <div class="w-full flex flex-col items-center justify-center mb-[2.5rem]">
       <form @submit.prevent="search" class="text-center py-6 px-4 max-w-xl mt-8">
         <div class="flex items-center justify-center mb-4">
           <a href="https://enviosfasttrackni.com">
