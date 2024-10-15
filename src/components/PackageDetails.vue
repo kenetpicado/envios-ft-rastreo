@@ -2,11 +2,11 @@
   <Transition>
     <div v-if="result.details.length > 0 ?? result.logs.length > 0" class="text-center max-w-xl">
       <div v-for="(detail, index) in result.details" :key="detail" class="mb-4 px-2">
-        <span
+        <span class="px-1"
           :class="{ 'font-bold text-2xl': index == 0 }"
-          v-html="detail"
-          style="white-space: pre-wrap"
-        ></span>
+        >
+          {{ detail }}
+        </span>
       </div>
       <div v-for="(log, index) in result.logs" class="mb-5" :key="index">
         <div class="flex flex-col items-center justify-center mb-2">
@@ -24,7 +24,7 @@
           {{ log.status }}
         </div>
         <div>
-          {{ log.formatted }}
+          {{ log.date }}
         </div>
       </div>
     </div>

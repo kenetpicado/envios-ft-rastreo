@@ -1,6 +1,4 @@
 <script setup>
-import Loading from 'vue-loading-overlay'
-import 'vue-loading-overlay/dist/css/index.css'
 import PackageDetails from '@/components/PackageDetails.vue'
 import SearchInput from '@/components/SearchInput.vue'
 import useTrack from '@/composables/useTrack'
@@ -13,7 +11,6 @@ const { search, result, searching, track } = useTrack()
     class="text-white rounded-b-3xl shadow-xl"
     style="background: linear-gradient(20deg, #1b9cfd, #004aad)"
   >
-    <Loading v-model:active="searching" :is-full-page="true" />
     <div class="w-full flex flex-col items-center justify-center mb-[2.5rem]">
       <form @submit.prevent="search" class="text-center py-6 px-4 max-w-xl mt-8">
         <div class="flex items-center justify-center mb-4">
@@ -26,13 +23,13 @@ const { search, result, searching, track } = useTrack()
           Ingresa el número de seguimiento y mantente al tanto del progreso de tu paquete en tiempo
           real ⏰
         </div>
-        <SearchInput v-model="track" />
+        <SearchInput v-model="track" :loading="searching" />
       </form>
     </div>
   </section>
   <section class="bg-white text-gray-800 h-full mb-4">
     <div class="w-full flex flex-col items-center justify-center mb-4">
-      <div v-if="!result" class="text-gray-400 mt-4">Aquí verás el estado de tu paquete 😊</div>
+      <div v-if="!result.details.length" class="text-gray-400 mt-4">Aquí verás el estado de tu paquete 😊</div>
       <PackageDetails :result="result" />
     </div>
   </section>

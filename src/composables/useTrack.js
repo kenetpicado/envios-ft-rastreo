@@ -3,8 +3,8 @@ import axios from 'axios'
 import { ref } from 'vue'
 
 export function useTrack() {
-  const BASE_URL = 'https://scrape-it-production.up.railway.app'
-  //const BASE_URL = 'http://localhost:3000'
+  //const BASE_URL = 'https://scrape-it-production.up.railway.app'
+  const BASE_URL = 'http://localhost:3001'
   const searching = ref(false)
   const track = ref('')
 
@@ -31,14 +31,12 @@ export function useTrack() {
     }
 
     try {
-      resetValues()
       searching.value = true
-      const { data } = await axios.get(`${BASE_URL}/everest`, {
+      resetValues()
+      const { data } = await axios.get(`${BASE_URL}/search`, {
         params: { track: track.value }
       })
-      result.value.details = data.details
-      result.value.logs = data.logs
-      result.value.is_completed = data.is_completed
+      result.value = data
     } catch (error) {
       toast.error(error?.message || 'Error al buscar el paquete')
     } finally {
