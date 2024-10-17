@@ -11,7 +11,6 @@ export function useTrack() {
   const result = ref({
     details: [],
     logs: [],
-    is_completed: false
   })
 
   const search = async () => {
@@ -45,7 +44,7 @@ export function useTrack() {
   }
 
   function resetValues() {
-    result.value = { details: [], logs: [], is_completed: false }
+    result.value = { details: [], logs: [] }
   }
 
   function clear() {
