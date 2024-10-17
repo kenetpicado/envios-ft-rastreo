@@ -16,7 +16,7 @@
       aria-label="Buscar"
       class="flex p-2 items-center justify-center bg-[#8f00ff] text-white h-full rounded-full transition select-none duration-300 transform active:scale-110"
     >
-      <LoadingAnimation v-if="loading"/>
+      <LoadingAnimation v-if="loading" />
       <SearchSvg v-else />
     </button>
   </div>

@@ -29,7 +29,9 @@ const { search, result, searching, track } = useTrack()
   </section>
   <section class="bg-white text-gray-800 h-full mb-4">
     <div class="w-full flex flex-col items-center justify-center mb-4">
-      <div v-if="!result.details.length" class="text-gray-400 mt-4">Aquí verás el estado de tu paquete 😊</div>
+      <div v-if="!result.details.length" class="text-gray-400 mt-4">
+        Aquí verás el estado de tu paquete 😊
+      </div>
       <PackageDetails :result="result" />
     </div>
   </section>
