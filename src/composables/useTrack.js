@@ -3,8 +3,8 @@ import axios from 'axios'
 import { ref } from 'vue'
 
 export function useTrack() {
-  //const BASE_URL = 'https://scrape-it-production.up.railway.app'
-  const BASE_URL = 'http://localhost:3001'
+  const BASE_URL = 'https://ft-backend-production.up.railway.app'
+  //const BASE_URL = 'http://localhost:3001'
   const searching = ref(false)
   const track = ref('')
 

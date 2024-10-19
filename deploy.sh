@@ -4,7 +4,7 @@ set -e
 
 git add .
 git commit -m "deploy"
-git push
+git push origin main
 
 npm run build
 
