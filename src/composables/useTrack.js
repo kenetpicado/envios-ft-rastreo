@@ -25,8 +25,8 @@ export function useTrack() {
       return
     }
 
-    if (track.value.length > 40) {
-      toast.error('El número de rastreo no puede superar los 40 caracteres')
+    if (track.value.length < 5) {
+      toast.error('El número de rastreo debe tener al menos 5 caracteres')
       return
     }
 
