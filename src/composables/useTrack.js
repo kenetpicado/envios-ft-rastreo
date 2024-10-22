@@ -1,3 +1,4 @@
+import { useHistoryStore } from '@/stores/history'
 import { toast } from '@/utils/toast.js'
 import axios from 'axios'
 import { ref } from 'vue'
@@ -8,6 +9,7 @@ export function useTrack() {
   //const BASE_URL = 'http://localhost:3001'
   const searching = ref(false)
   const track = ref('')
+  const history = useHistoryStore()
 
   const result = ref({
     details: [],
@@ -39,6 +41,7 @@ export function useTrack() {
 
       if (data.details.length > 1) {
         result.value = data
+        history.setTracking(track.value, data.details[0])
       } else {
         searchInEverest()
       }
@@ -55,6 +58,10 @@ export function useTrack() {
       const { data } = await axios.get(`${SECONDARY_URL}/everest`, {
         params: { track: track.value }
       })
+
+      if (data.details.length > 1) {
+        history.setTracking(track.value, data.details[0])
+      }
 
       result.value = data
     } catch (error) {
