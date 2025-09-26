@@ -5,6 +5,7 @@ import SearchInput from '@/components/SearchInput.vue'
 import useTrack from '@/composables/useTrack'
 import { useHistoryStore } from '@/stores/history';
 import { storeToRefs } from 'pinia';
+import LoadingAnimation from '@/components/LoadingAnimation.vue'
 
 const { search, result, searching, track } = useTrack()
 const { history } = storeToRefs(useHistoryStore())
@@ -37,7 +38,10 @@ function showThis(tracking) {
   </section>
   <section class="bg-white text-gray-800 h-full mb-4">
     <div class="max-w-xl mx-auto flex flex-col items-center justify-center mb-4">
-      <div v-if="!result.details.length && history.length" class="w-full px-6 flex flex-col gap-4 cursor-pointer">
+      <div v-if="searching" class="text-gray-400">
+        Buscando...
+      </div>
+      <div v-else-if="!result.details.length && history.length" class="w-full px-6 flex flex-col gap-4 cursor-pointer">
         <div v-for="item in history" :key="item.date" class="border w-full rounded-xl p-3"
           @click="showThis(item.tracking)">
           <div class="flex justify-between items-center">
