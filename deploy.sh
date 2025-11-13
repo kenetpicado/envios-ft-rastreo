@@ -13,7 +13,7 @@ cp CNAME dist/
 
 cd dist
 
-#git init
+git init
 git add .
 git commit -m 'deploy'
 
