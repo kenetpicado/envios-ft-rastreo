@@ -7,7 +7,7 @@
       required
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
-      placeholder="Número de rastreo"
+      :placeholder="`Buscar paquete por ${searchType === 'track' ? 'tracking' : 'guía'}`"
       :disabled="loading"
       class="px-4 w-full focus:outline-none"
     />
@@ -34,6 +34,10 @@ defineProps({
   loading: {
     type: Boolean,
     default: false
+  },
+  searchType: {
+    type: String,
+    default: 'track'
   }
 })
 </script>

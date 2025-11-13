@@ -5,15 +5,18 @@ import { ref } from 'vue'
 
 export function useTrack() {
   const BASE_URL = 'https://ft-backend-production.up.railway.app'
-  //const BASE_URL = 'http://localhost:3001'
+  // const BASE_URL = 'http://localhost:3001'
   const searching = ref(false)
   const track = ref('')
   const history = useHistoryStore()
+  const searchType = ref('track')
 
   const result = ref({
     details: [],
     logs: []
   })
+
+  const params = ref({})
 
   const search = async () => {
     if (!track.value) {
@@ -34,8 +37,15 @@ export function useTrack() {
     try {
       searching.value = true
       resetValues()
+
+      if (searchType.value === 'track') {
+        params.value = { track: track.value }
+      } else {
+        params.value = { guide: track.value }
+      }
+
       const { data } = await axios.get(`${BASE_URL}/search`, {
-        params: { track: track.value }
+        params: params.value
       })
 
       if (data.details.length > 1) {
@@ -58,7 +68,7 @@ export function useTrack() {
     track.value = ''
   }
 
-  return { search, result, searching, track, clear }
+  return { search, result, searching, track, clear, searchType }
 }
 
 export default useTrack

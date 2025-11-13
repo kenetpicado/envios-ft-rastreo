@@ -5,11 +5,15 @@ import SearchInput from '@/components/SearchInput.vue'
 import useTrack from '@/composables/useTrack'
 import { useHistoryStore } from '@/stores/history';
 import { storeToRefs } from 'pinia';
-import LoadingAnimation from '@/components/LoadingAnimation.vue'
 
-const { search, result, searching, track } = useTrack()
+const { search, result, searching, track, searchType } = useTrack()
 const { history } = storeToRefs(useHistoryStore())
 const { clear } = useHistoryStore()
+
+const types = [
+  { label: 'Tracking', value: 'track' },
+  { label: 'Guía', value: 'guide' },
+]
 
 function showThis(tracking) {
   track.value = tracking
@@ -32,7 +36,27 @@ function showThis(tracking) {
           Ingresa el número de seguimiento y mantente al tanto del progreso de tu paquete en tiempo
           real ⏰
         </div>
-        <SearchInput v-model="track" :loading="searching" />
+
+        <div class="mb-6 w-full lg:w-56">
+          <div class="relative grid grid-cols-2 rounded-full bg-white border p-1">
+            <div
+              class="absolute top-1 bottom-1 col-span-1 rounded-full bg-[#8f00ff] transition-all duration-300 ease-in-out"
+              :class="searchType === 'track' ? 'left-1 w-[calc(50%-0.25rem)]' : 'left-1/2 w-[calc(50%-0.25rem)]'"
+            ></div>
+
+            <button
+              v-for="item in types"
+              :key="item.value"
+              class="relative z-10 py-2 text-center text-sm transition-colors duration-300"
+              :class="searchType === item.value ? 'text-white' : 'text-[#8f00ff]'"
+              @click.prevent="searchType = item.value"
+            >
+              {{ item.label }}
+            </button>
+          </div>
+        </div>
+
+        <SearchInput v-model="track" :loading="searching" :searchType="searchType" />
       </form>
     </div>
   </section>
