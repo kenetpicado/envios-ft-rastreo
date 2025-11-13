@@ -17,6 +17,6 @@ git init
 git add .
 git commit -m 'deploy'
 
-git push -f git@github.com:kenetpicado/envios-ft-rastreo master:gh-pages
+git push -f git@github.com:kenetpicado/envios-ft-rastreo main:gh-pages
 
 cd -
